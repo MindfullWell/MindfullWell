@@ -5,11 +5,11 @@ const AuthContext = createContext(null);
 // Default user profile
 const DEFAULT_PROFILE = {
   name: 'Maitreya',
-  email: '  ',
+  email: 'maitreya@mindfullwell.com',
   profilePicture: null
 };
 
-const DEFAULT_PASSWORD = 'peace2024';
+const DEFAULT_PASSWORD = 'maitreya123';
 
 export function AuthProvider({ children }) {
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
