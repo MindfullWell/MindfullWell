@@ -1,0 +1,257 @@
+/* Import Google Font */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
+
+:root {
+  /* Color Palette - Calm & Reassuring */
+  --color-bg-primary: #c3d7df;
+  --color-bg-secondary: #f5f9fc;
+  --color-card: #ffffff;
+  --color-dark: #0d1c38;
+  --color-dark-light: #2a3d5f;
+  --color-text-primary: #1a2b4a;
+  --color-text-secondary: #5a6b8a;
+  --color-text-muted: #8a9abb;
+  --color-accent: #0c6fe7;
+  --color-accent-light: #b8d4f0;
+  --color-active-light: #dbeafe;
+  --color-wave-1: #6b9ad4;
+  --color-wave-2: #8bb4e8;
+  --color-wave-3: #a8c8f0;
+  --color-wave-4: #c4dcf8;
+  
+  /* Sidebar */
+  --sidebar-width-collapsed: 56px;
+  --sidebar-width-open: 200px;
+
+  /* Shadows - Soft & Diffused */
+  --shadow-sm: 0 2px 8px rgba(26, 43, 74, 0.06);
+  --shadow-md: 0 4px 16px rgba(26, 43, 74, 0.08);
+  --shadow-lg: 0 8px 32px rgba(26, 43, 74, 0.1);
+  --shadow-glow: 0 0 20px rgba(123, 163, 212, 0.25);
+
+  /* Spacing Scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Typography */
+  --font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+
+  /* Animation Timing */
+  --ease-calm: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-soft: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 200ms;
+  --duration-slow: 300ms;
+  --duration-wave: 3s;
+
+  /* Layout */
+  --max-width-mobile: 100%;
+  --max-width-tablet: 600px;
+  --max-width-desktop: 800px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+#root {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* Page Container */
+.page {
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: var(--space-4);
+}
+
+.app-content {
+  margin-left: var(--sidebar-width-collapsed);
+  transition: margin-left var(--duration-slow) var(--ease-calm);
+  min-height: 100vh;
+}
+
+.app-content.sidebar-open {
+  margin-left: var(--sidebar-width-open);
+}
+
+/* iPad Portrait (768px+) */
+@media (min-width: 768px) {
+  .app-content.sidebar-open {
+    margin-left: 220px;
+  }
+}
+
+/* Card Component */
+
+/* Card Component */
+.card {
+  background: var(--color-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: var(--space-6);
+  transition: box-shadow var(--duration-normal) var(--ease-calm),
+    transform var(--duration-normal) var(--ease-calm);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+/* Interactive Elements */
+.interactive {
+  cursor: pointer;
+  transition: transform var(--duration-normal) var(--ease-calm),
+    box-shadow var(--duration-normal) var(--ease-calm),
+    opacity var(--duration-normal) var(--ease-calm);
+}
+
+.interactive:hover {
+  transform: scale(1.02);
+}
+
+.interactive:active {
+  transform: scale(0.98);
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn var(--duration-slow) var(--ease-calm) forwards;
+}
+
+/* Stagger children animation */
+.stagger-children > * {
+  opacity: 0;
+  animation: fadeIn var(--duration-slow) var(--ease-calm) forwards;
+}
+
+.stagger-children > *:nth-child(1) {
+  animation-delay: 0ms;
+}
+.stagger-children > *:nth-child(2) {
+  animation-delay: 80ms;
+}
+.stagger-children > *:nth-child(3) {
+  animation-delay: 160ms;
+}
+.stagger-children > *:nth-child(4) {
+  animation-delay: 240ms;
+}
+.stagger-children > *:nth-child(5) {
+  animation-delay: 320ms;
+}
+
+/* Page Transition */
+.page-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity var(--duration-slow) var(--ease-calm),
+    transform var(--duration-slow) var(--ease-calm);
+}
+
+.page-exit {
+  opacity: 1;
+}
+
+.page-exit-active {
+  opacity: 0;
+  transition: opacity var(--duration-normal) var(--ease-calm);
+}
+
+/* Responsive Breakpoints */
+/* iPad Portrait (768px+) */
+@media (min-width: 768px) {
+  .page {
+    padding: var(--space-6);
+  }
+
+  .card {
+    padding: var(--space-8);
+  }
+  
+  .page--with-sidebar {
+    margin-left: var(--sidebar-width-collapsed);
+  }
+  
+  .page--sidebar-open {
+    margin-left: 220px;
+  }
+}
+
+/* iPad Landscape (1024px+) */
+@media (min-width: 1024px) {
+  .page {
+    padding: var(--space-8);
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

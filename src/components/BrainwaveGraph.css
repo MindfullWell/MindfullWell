@@ -1,0 +1,166 @@
+.brainwave-container.card {
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    var(--color-dark) 0%,
+    var(--color-dark-light) 100%
+  );
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  margin-bottom: var(--space-6);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.brainwave-container:hover {
+  box-shadow: var(--shadow-lg), var(--shadow-glow);
+}
+
+.brainwave-label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-accent-light);
+  margin-bottom: var(--space-4);
+  text-align: center;
+  opacity: 0.9;
+}
+
+.brainwave-svg {
+  width: 100%;
+  height: auto;
+  max-height: 200px;
+  display: block;
+}
+
+.brainwave-hint {
+  font-size: var(--font-size-xs);
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  margin-top: var(--space-4);
+}
+
+/* Wave Animations */
+.wave {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.wave-1 {
+  animation: wave1 4s ease-in-out infinite;
+}
+
+.wave-2 {
+  animation: wave2 3.5s ease-in-out infinite;
+  animation-delay: -0.5s;
+}
+
+.wave-3 {
+  animation: wave3 3s ease-in-out infinite;
+  animation-delay: -1s;
+}
+
+@keyframes wave1 {
+  0%, 100% {
+    d: path("M0,100 Q25,60 50,100 T100,100 T150,100 T200,100 T250,100 T300,100 T350,100 T400,100");
+  }
+  25% {
+    d: path("M0,100 Q25,80 50,100 T100,85 T150,100 T200,115 T250,100 T300,85 T350,100 T400,100");
+  }
+  50% {
+    d: path("M0,100 Q25,120 50,100 T100,100 T150,80 T200,100 T250,120 T300,100 T350,80 T400,100");
+  }
+  75% {
+    d: path("M0,100 Q25,90 50,100 T100,115 T150,100 T200,85 T250,100 T300,115 T350,100 T400,100");
+  }
+}
+
+@keyframes wave2 {
+  0%, 100% {
+    d: path("M0,100 Q30,70 60,100 T120,100 T180,100 T240,100 T300,100 T360,100 T400,100");
+  }
+  25% {
+    d: path("M0,100 Q30,90 60,100 T120,110 T180,100 T240,90 T300,100 T360,110 T400,100");
+  }
+  50% {
+    d: path("M0,100 Q30,110 60,100 T120,90 T180,100 T240,110 T300,100 T360,90 T400,100");
+  }
+  75% {
+    d: path("M0,100 Q30,85 60,100 T120,105 T180,100 T240,95 T300,100 T360,105 T400,100");
+  }
+}
+
+@keyframes wave3 {
+  0%, 100% {
+    d: path("M0,100 Q20,80 40,100 T80,100 T120,100 T160,100 T200,100 T240,100 T280,100 T320,100 T360,100 T400,100");
+  }
+  33% {
+    d: path("M0,100 Q20,95 40,100 T80,105 T120,100 T160,95 T200,100 T240,105 T280,100 T320,95 T360,100 T400,100");
+  }
+  66% {
+    d: path("M0,100 Q20,105 40,100 T80,95 T120,100 T160,105 T200,100 T240,95 T280,100 T320,105 T360,100 T400,100");
+  }
+}
+
+/* Glow pulse */
+.wave-glow {
+  fill: radial-gradient(circle, var(--color-accent-light) 0%, transparent 70%);
+  opacity: 0;
+  animation: glowPulse 4s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    opacity: 0;
+    r: 60;
+  }
+  50% {
+    opacity: 0.15;
+    r: 80;
+  }
+}
+
+/* Hover expansion effect */
+.brainwave-container:hover .wave-1 {
+  animation-duration: 3s;
+}
+
+.brainwave-container:hover .wave-2 {
+  animation-duration: 2.5s;
+}
+
+.brainwave-container:hover .wave-3 {
+  animation-duration: 2s;
+}
+
+/* iPad Portrait */
+@media (min-width: 768px) {
+  .brainwave-container {
+    padding: var(--space-8);
+    max-width: 100%;
+  }
+  
+  .brainwave-svg {
+    max-height: 240px;
+  }
+  
+  .brainwave-label {
+    font-size: var(--font-size-base);
+  }
+}
+
+/* iPad Landscape */
+@media (min-width: 1024px) {
+  .brainwave-svg {
+    max-height: 280px;
+  }
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .wave-1,
+  .wave-2,
+  .wave-3,
+  .wave-glow {
+    animation: none;
+  }
+}
